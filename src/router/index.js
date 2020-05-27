@@ -1,14 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import PageNotFound from "../components/PageNotFound.vue";
 
 Vue.use(VueRouter);
+
+const parseProps = r => ({ id: parseInt(r.params.id) });
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/home",
+    redirect: "/"
   },
   {
     path: "/places",
@@ -22,12 +29,18 @@ const routes = [
   {
     path: "/places/:id",
     name: "Places-details",
+    props: parseProps,
     // route level code-splitting
     // this generates a separate chunk (places.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "places" */ "../views/Places-details.vue")
-  }
+  },
+  {
+    path: "*",
+    name: "PageNotFound",
+    component: PageNotFound
+  },
 ];
 
 const router = new VueRouter({

@@ -28,15 +28,6 @@
   </v-app>
 </template>
 
-<script>
-  export default {
-    props: {},
-    data: () => ({
-      search: '',
-    }),
-  }
-</script>
-
 <style>
 #blue {
   color: #01579b;
