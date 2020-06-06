@@ -6,7 +6,7 @@
       <h4>in your city or any city</h4>
     </div>
     <div class="route">
-      <router-link to="/Places" class="links">
+      <router-link to="/places" class="links">
         <v-btn :elevation="14">
           <span>Find Places</span>
           <v-icon>mdi-map-marker</v-icon>

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "PageNotFound",
+  name: "pageNotFound",
 
   data: () => ({
     message: "This is not the page you're looking for."

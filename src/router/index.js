@@ -10,7 +10,7 @@ const parseProps = r => ({ id: parseInt(r.params.id) });
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home
   },
   {
@@ -19,7 +19,7 @@ const routes = [
   },
   {
     path: "/places",
-    name: "Places",
+    name: "places",
     // route level code-splitting
     // this generates a separate chunk (places.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -28,7 +28,7 @@ const routes = [
   },
   {
     path: "/places/:id",
-    name: "Places-details",
+    name: "places-details",
     props: parseProps,
     // route level code-splitting
     // this generates a separate chunk (places.[hash].js) for this route
@@ -38,7 +38,7 @@ const routes = [
   },
   {
     path: "*",
-    name: "PageNotFound",
+    name: "pageNotFound",
     component: PageNotFound
   }
 ];

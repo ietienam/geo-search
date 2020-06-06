@@ -54,7 +54,7 @@
 import { mapActions, mapState } from "vuex";
 
 export default {
-  name: "Places",
+  name: "places",
   data() {
     return {
       search: "",
