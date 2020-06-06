@@ -1,5 +1,5 @@
-export const PLACE = process.env.VUE_APP_PLACE_SEARCH_API;
-export const DETAILS = process.env.VUE_APP_PLACE_DETAILS_API;
-export const PHOTO = process.env.VUE_APP_PHOTO_SEARCH_API;
-export const PROXY = process.env.VUE_APP_PROXY;
+export const PLACE = "https://maps.googleapis.com/maps/api/place/textsearch/json?";
+export const DETAILS = "https://maps.googleapis.com/maps/api/place/details/json?";
+export const PHOTO = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400";
+export const PROXY = "https://secret-atoll-96241.herokuapp.com/";
 export const KEY = process.env.VUE_APP_KEY;
