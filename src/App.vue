@@ -1,12 +1,12 @@
 <template>
   <v-app id="app">
-    <v-app-bar
-      app
-      clipped-left
-      color="grey lighten-2"
-    >
+    <v-app-bar app clipped-left color="grey lighten-2">
       <router-link to="/" class="links">
-        <span class="title ml-3 mr-5">Geo&nbsp;<span class="font-weight-light" id="invert">Search</span></span>
+        <span class="title ml-3 mr-5"
+          >Geo&nbsp;<span class="font-weight-light" id="invert"
+            >Search</span
+          ></span
+        >
       </router-link>
       <router-link to="/Places" class="links">
         <v-btn>
@@ -19,9 +19,7 @@
     </v-app-bar>
 
     <v-content>
-      <v-container
-        class="grey lighten-4 fill-height"
-      >
+      <v-container class="grey lighten-4 fill-height">
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -35,10 +33,11 @@
 
 #invert {
   color: snow;
-  background-color:darkslategray;
+  background-color: darkslategray;
 }
 
-.links, .links span {
+.links,
+.links span {
   text-decoration: none;
   color: darkslategray;
 }

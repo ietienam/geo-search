@@ -11,7 +11,7 @@ export default {
   name: "PageNotFound",
 
   data: () => ({
-    message: "This is not the page you're looking for.",
+    message: "This is not the page you're looking for."
   })
 };
 </script>

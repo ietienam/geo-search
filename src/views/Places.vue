@@ -8,16 +8,24 @@
       label="Restaurants in Abuja"
       prepend-inner-icon="mdi-magnify"
       clearable
+      @click:prepend-inner="loadPlaces()"
+      @keyup.enter="loadPlaces()"
     ></v-text-field>
 
-    <v-row dense>
-      <v-col cols="12">
+    <v-row dense v-if="placesState.data">
+      <v-col
+        cols="12"
+        v-for="place in placesState.data.results"
+        :key="place.id"
+      >
         <v-card color="#385F73" dark>
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
-              <v-card-title class="headline"></v-card-title>
+              <v-card-title class="headline">{{ place.name }}</v-card-title>
+              <v-card-subtitle>{{ place.formatted_address }}</v-card-subtitle>
               <v-rating
-                v-model="rating"
+                class="ml-3"
+                :value="place.rating"
                 color="yellow darken-3"
                 background-color="grey darken-1"
                 empty-icon="$ratingFull"
@@ -27,11 +35,13 @@
                 :dense="dense"
                 :size="size"
               ></v-rating>
-              <v-card-subtitle></v-card-subtitle>
+              <v-card-subtitle class="d-inline"
+                >({{ place.user_ratings_total }}) Reviews</v-card-subtitle
+              >
             </div>
 
             <v-avatar class="ma-3" size="125" tile>
-              <v-img></v-img>
+              <v-img :src="place.icon"></v-img>
             </v-avatar>
           </div>
         </v-card>
@@ -41,17 +51,31 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
+
 export default {
   name: "Places",
   data() {
     return {
       search: "",
-      rating: 0,
       size: 12,
       dense: true,
-      readonly: true,
+      readonly: true
     };
   },
+  methods: {
+    ...mapActions(["getPlacesAction", "getPhotoAction"]),
+    async loadPlaces() {
+      const str = this.search;
+      await this.getPlacesAction(str);
+    }
+  },
+  computed: {
+    ...mapState(["places"]),
+    placesState() {
+      return this.places;
+    }
+  }
 };
 </script>
 
