@@ -6,6 +6,8 @@ import { GET_PLACES, GET_PLACE, GET_PHOTOS } from "./mutation-types";
 
 Vue.use(Vuex);
 
+Vue.config.devtools = true;
+
 const state = () => ({
   places: {}, //places api returns an object
   place: {}, //single place object through placeid
