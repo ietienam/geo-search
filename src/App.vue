@@ -23,10 +23,27 @@
         <router-view></router-view>
       </v-container>
     </v-content>
+    <v-footer absolute="false" app>
+      <a
+        id="link"
+        href="https://enie.netlify.app"
+        target="_blank"
+        rel="no-opener"
+      >
+        <small>&copy; Ini Etienam</small>
+      </a>
+    </v-footer>
   </v-app>
 </template>
 
 <style>
+#link {
+  text-align: center;
+  margin: 0 auto;
+  text-decoration: none;
+  color: darkslategray;
+}
+
 #blue {
   color: #01579b;
 }
