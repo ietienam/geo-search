@@ -9,18 +9,16 @@
       <v-col cols="12">
         <h1>{{ getPlace.data.result.name }}</h1>
         <div>
-          <v-btn
+          <a
             v-if="getPlace.data.result.website"
-            text
-            small
-            color="primary"
-            ripple
-            href="getPlace.data.result.website"
+            :href="getPlace.data.result.website"
             rel="noopener"
             target="_blank"
           >
-            Website
-          </v-btn>
+            <v-btn text small color="primary" ripple>
+              Website
+            </v-btn>
+          </a>
           <v-rating
             class="ml-4 float-left"
             :value="getPlace.data.result.rating"
@@ -57,10 +55,18 @@
         <v-divider></v-divider>
         <h2>Google Reviews</h2>
         <div
+          id="review"
           v-for="review in getPlace.data.result.reviews"
           :key="review.author_name"
         >
-          <h5>{{ review.author_name }}</h5>
+          <v-avatar size="30">
+            <img
+              :src="review.profile_photo_url"
+              :alt="review.author_name"
+              :title="review.author_name"
+            />
+          </v-avatar>
+          <h4>{{ review.author_name }}</h4>
           <v-rating
             class="ml-4 float-left"
             :value="review.rating"
@@ -126,5 +132,8 @@ export default {
 .time {
   font-size: 0.8rem;
   color: dimgray;
+}
+#review {
+  margin-top: 1.5rem;
 }
 </style>
