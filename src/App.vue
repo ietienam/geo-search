@@ -23,7 +23,7 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer absolute="false" app>
+    <v-footer absolute app>
       <a
         id="link"
         href="https://enie.netlify.app"

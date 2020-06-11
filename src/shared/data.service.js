@@ -1,6 +1,17 @@
 import * as axios from "axios";
 
-import { PLACE, DETAILS, PHOTO, PROXY } from "./config";
+import { PLACE, DETAILS, PROXY } from "./config";
+
+const nextPage = async function(str) {
+  try {
+    const places = await axios.get(
+      `${PROXY}${PLACE}pagetoken=${str}&key=${process.env.VUE_APP_KEY}`
+    );
+    return places;
+  } catch (error) {
+    return `OOPS! Something went wrong. ERROR: ${error}`;
+  }
+};
 
 const getPlaces = async function(str) {
   try {
@@ -24,19 +35,8 @@ const getPlace = async function(id) {
   }
 };
 
-const getPhotos = async function(photoreference) {
-  try {
-    const photos = await axios.get(
-      `${PROXY}${PHOTO}&photoreference=${photoreference}&key=${process.env.VUE_APP_KEY}`
-    );
-    return photos;
-  } catch (error) {
-    return `OOPS! Something went wrong. ERROR: ${error}`;
-  }
-};
-
 export const dataService = {
   getPlaces,
   getPlace,
-  getPhotos
+  nextPage
 };
