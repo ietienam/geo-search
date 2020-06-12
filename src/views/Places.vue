@@ -12,8 +12,8 @@
       @keyup.enter="loadPlaces()"
     ></v-text-field>
 
-    <v-row dense v-if="placesState.data">
-      <v-col cols="12" v-if="placesState.data.next_page_token">
+    <v-row dense v-if="places.data">
+      <v-col cols="12" v-if="places.data.next_page_token">
         <v-btn
           @click="nextPage"
           elevation="8"
@@ -23,11 +23,7 @@
           >Next Page</v-btn
         >
       </v-col>
-      <v-col
-        cols="12"
-        v-for="place in placesState.data.results"
-        :key="place.id"
-      >
+      <v-col cols="12" v-for="place in places.data.results" :key="place.id">
         <router-link
           id="link"
           :to="{ name: 'places-details', params: { id: place.place_id } }"
@@ -59,7 +55,7 @@
           </v-card>
         </router-link>
       </v-col>
-      <v-col v-if="placesState.data.next_page_token" cols="12">
+      <v-col v-if="places.data.next_page_token" cols="12">
         <v-btn
           @click="nextPage"
           elevation="8"
@@ -93,17 +89,14 @@ export default {
       await this.getPlacesAction(str);
     },
     async nextPage() {
-      const token = this.placesState;
+      const token = this.places;
       if (token.data.next_page_token) {
         await this.nextPageAction(token.data.next_page_token);
       }
     }
   },
   computed: {
-    ...mapState(["places"]),
-    placesState() {
-      return this.places;
-    }
+    ...mapState(["places"])
   }
 };
 </script>

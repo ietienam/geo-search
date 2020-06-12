@@ -7,11 +7,11 @@
         >
       </v-col>
       <v-col cols="12">
-        <h1>{{ getPlace.data.result.name }}</h1>
+        <h1>{{ place.data.result.name }}</h1>
         <div>
           <a
-            v-if="getPlace.data.result.website"
-            :href="getPlace.data.result.website"
+            v-if="place.data.result.website"
+            :href="place.data.result.website"
             rel="noopener"
             target="_blank"
           >
@@ -21,7 +21,7 @@
           </a>
           <v-rating
             class="ml-4 float-left"
-            :value="getPlace.data.result.rating"
+            :value="place.data.result.rating"
             color="yellow darken-3"
             background-color="grey darken-1"
             empty-icon="$ratingFull"
@@ -32,22 +32,17 @@
             :size="12"
           ></v-rating>
         </div>
-        <p class="time">
-          Address: {{ getPlace.data.result.formatted_address }}
+        <p class="time">Address: {{ place.data.result.formatted_address }}</p>
+        <p class="time" v-if="place.data.result.international_phone_number">
+          Phone: {{ place.data.result.international_phone_number }}
         </p>
-        <p class="time" v-if="getPlace.data.result.international_phone_number">
-          Phone: {{ getPlace.data.result.international_phone_number }}
-        </p>
-        <div v-if="getPlace.data.result.opening_hours">
-          <p
-            id="open"
-            v-if="getPlace.data.result.opening_hours.open_now === true"
-          >
+        <div v-if="place.data.result.opening_hours">
+          <p id="open" v-if="place.data.result.opening_hours.open_now === true">
             Open
           </p>
           <p
             id="closed"
-            v-else-if="getPlace.data.result.opening_hours.open_now === false"
+            v-else-if="place.data.result.opening_hours.open_now === false"
           >
             Closed
           </p>
@@ -56,7 +51,7 @@
         <h2>Google Reviews</h2>
         <div
           id="review"
-          v-for="review in getPlace.data.result.reviews"
+          v-for="review in place.data.result.reviews"
           :key="review.author_name"
         >
           <v-avatar size="30">
@@ -114,10 +109,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["place"]),
-    getPlace() {
-      return this.place;
-    }
+    ...mapState(["place"])
   }
 };
 </script>
